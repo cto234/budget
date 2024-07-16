@@ -86,36 +86,43 @@ const FinanceManager = () => {
           }));
 
     return (
-        <div className="flex justify-between p-4">
-            <div className="w-1/2 pr-2 underline">
-                <IncomeTracker 
-                    incomeSources={incomeSources} 
-                    addIncomeSource={addIncomeSource} 
-                    removeIncomeSource={removeIncomeSource} 
-                    updateIncomeSource={updateIncomeSource}
-                    totalIncome={totalIncome}
-                />
+        <div className="flex p-4">
+            <div className="w-1/2 flex pr-2 space-x-2">
+                <div className="w-1/2 h-screen overflow-y-auto">
+                    <IncomeTracker 
+                        incomeSources={incomeSources} 
+                        addIncomeSource={addIncomeSource} 
+                        removeIncomeSource={removeIncomeSource} 
+                        updateIncomeSource={updateIncomeSource}
+                        totalIncome={totalIncome}
+                    />
+                </div>
+                <div className="w-1/2 h-screen overflow-y-auto">
+                    <ExpenseTracker 
+                        expenseSources={expenseSources} 
+                        addExpenseSource={addExpenseSource} 
+                        removeExpenseSource={removeExpenseSource}
+                        updateExpenseSource={updateExpenseSource}
+                        totalExpenses={totalExpenses} 
+                    />
+                </div>
             </div>
-            <div className="w-1/2 pl-2 underline">
-                <ExpenseTracker 
-                    expenseSources={expenseSources} 
-                    addExpenseSource={addExpenseSource} 
-                    removeExpenseSource={removeExpenseSource}
-                    updateExpenseSource={updateExpenseSource}
-                    totalExpenses={totalExpenses} 
-                />
-            </div>
-            <div className="w-full mt-4">
-                <FinancialSummary totalIncome={totalIncome} totalExpenses={totalExpenses} />
-            </div>
-            <div className="w-full mt-4">
-                <button onClick={() => setShowExpenses(!showExpenses)}>
-                    {showExpenses ? 'Show Income Pie Chart' : 'Show Expenses Pie Chart'}
-                </button>
-                <PieChartComponent
-                    colors={pieChartColors}
-                    data={pieChartData} 
-                />
+            <div className="w-1/2 flex flex-col pl-2">
+                <div className="mb-4">
+                    <FinancialSummary totalIncome={totalIncome} totalExpenses={totalExpenses} />
+                </div>
+                <div>
+                    <button 
+                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 mb-4"
+                        onClick={() => setShowExpenses(!showExpenses)}
+                    >
+                        {showExpenses ? 'Show Income Pie Chart' : 'Show Expenses Pie Chart'}
+                    </button>
+                    <PieChartComponent
+                        colors={pieChartColors}
+                        data={pieChartData} 
+                    />
+                </div>
             </div>
         </div>
     );

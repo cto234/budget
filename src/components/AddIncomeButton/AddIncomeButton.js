@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const AddIncomeButton = ({ source, onRemove, onUpdate }) => {
     const [title, setTitle] = useState(source.title || '');
@@ -26,24 +28,26 @@ const AddIncomeButton = ({ source, onRemove, onUpdate }) => {
     };
 
     return (
-        <div className="addIncomeButtonContainer">
-            <input
-                className="IncomeTitleInput"
-                type="text"
-                placeholder="Enter title"
-                value={title}
-                onChange={handleTitleChange}
-            />
-            <input
-                className="IncomeInput"
-                type="number"
-                step="0.01"
-                placeholder="Enter amount"
-                value={amount}
-                onChange={handleAmountChange}
-            />
-            <button className="removeButton" onClick={handleRemove}>
-                Remove
+        <div className="flex items-center border border-gray-300 p-2 mb-2 rounded bg-gray-100">
+            <div className="flex-grow flex items-center space-x-2">
+                <input
+                    type="text"
+                    className="border border-gray-300 p-1 rounded outline-none text-sm w-20"
+                    placeholder="Title"
+                    value={title}
+                    onChange={handleTitleChange}
+                />
+                <input
+                    type="number"
+                    step="0.01"
+                    className="border border-gray-300 p-1 rounded outline-none text-sm w-20"
+                    placeholder="Amount"
+                    value={amount}
+                    onChange={handleAmountChange}
+                />
+            </div>
+            <button className="ml-2 text-red-600" onClick={handleRemove}>
+                <FontAwesomeIcon icon={faTrash} />
             </button>
         </div>
     );
