@@ -7,7 +7,7 @@ function App() {
     <>
     <Router>
       <Routes>
-        <Route path='/' element={<FinanceManager />} />
+        <Route path="/budget" element={<FinanceManager />} />
       </Routes>
     </Router>
     </>
