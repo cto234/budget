@@ -15,3 +15,6 @@ function App() {
 }
 
 export default App;
+
+
+//For future reference, use routes for easy github deploy, be aware of path names

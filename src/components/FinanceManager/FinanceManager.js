@@ -4,6 +4,8 @@ import ExpenseTracker from '../ExpenseTracker/ExpenseTracker';
 import FinancialSummary from '../FinancialSummary/FinancialSummary';
 import PieChartComponent from '../PieChart/PieChart'; // Import the PieChartComponent
 import { v4 as uuidv4 } from 'uuid';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRotate } from '@fortawesome/free-solid-svg-icons';
 
 const FinanceManager = () => {
     const [incomeSources, setIncomeSources] = useState([]);
@@ -112,12 +114,13 @@ const FinanceManager = () => {
                     <FinancialSummary totalIncome={totalIncome} totalExpenses={totalExpenses} />
                 </div>
                 <div>
-                    <button 
-                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 mb-4"
-                        onClick={() => setShowExpenses(!showExpenses)}
-                    >
-                        {showExpenses ? 'Show Income Pie Chart' : 'Show Expenses Pie Chart'}
-                    </button>
+                <div className="relative group">
+                    <FontAwesomeIcon icon={faRotate} onClick={() => setShowExpenses(!showExpenses)} className="text-4xl cursor-pointer ml-6" />   
+                    <span className="absolute bottom-full mb-2 px-2 py-1 text-xs text-white bg-gray-700 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        {showExpenses? 'Show Income Pie Chart' : 'Show Expense Pie Chart'}
+                    </span>
+                </div>
+                    
                     <PieChartComponent
                         colors={pieChartColors}
                         data={pieChartData} 
