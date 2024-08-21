@@ -88,7 +88,7 @@ const FinanceManager = () => {
           }));
 
     return (
-        <div className="flex flex-wrap p-4">
+        <div className="flex flex-wrap p-4 bg-zinc-900">
             <div className="w-1/2 flex pr-2 space-x-2">
                 <div className="w-1/2 h-screen overflow-y-auto">
                     <IncomeTracker 
@@ -118,7 +118,7 @@ const FinanceManager = () => {
                     <FontAwesomeIcon 
                         icon={faRotate} 
                         onClick={() => setShowExpenses(!showExpenses)} 
-                        className={`text-4xl cursor-pointer ml-6 transition-transform duration-300 ${showExpenses ? 'rotate-180' : ''}`}
+                        className={`text-4xl text-white cursor-pointer ml-6 transition-transform duration-300 ${showExpenses ? 'rotate-180' : ''}`}
                     />
                         <span className="absolute bottom-full mb-2 px-2 py-1 text-xs text-white bg-gray-700 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         {showExpenses? 'Show Income Pie Chart' : 'Show Expense Pie Chart'}
