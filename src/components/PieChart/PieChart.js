@@ -17,12 +17,16 @@ const PieChartComponent = ({ colors, data, legendColor = 'white' }) => {
                 ]}
                 sx={{
                     [`& .${pieArcLabelClasses.root}`]: {
-                        fill: 'white',
+                        fill: legendColor,
                         fontWeight: 'bold',
+                        maxWidth: '20px',  // Set a max width for the text
+                        whiteSpace: 'nowrap',  // Prevent the text from wrapping to a new line
+                        overflow: 'hidden',  // Hide the overflowed part of the text
+                        textOverflow: 'ellipsis'
                     },
                     // Hiding the specific legend classes found during inspection
                     '& .MuiChartsLegend-root, & .MuiChartsLegend-column, & .css-1u0lry5-MuiChartsLegend-root': {
-                        display: 'none', // Hide the deprecated legend
+                        display: 'none', // Hide the default legend
                     },
                     // Changing "no data to display" text to white
                     '& .css-1f57y8b': {
@@ -39,8 +43,8 @@ const PieChartComponent = ({ colors, data, legendColor = 'white' }) => {
                     display: 'flex', 
                     flexDirection: 'column',  
                     alignSelf: 'flex-start',
-                    maxWidth: '150px',
-                    minWidth: '150px',  // Set a maximum width for the legend container
+                    maxWidth: '218px',
+                    minWidth: '218px',
                     overflowY: 'auto',  // Allow vertical scrolling if content overflows
                     overflowX: 'hidden',  // Prevent horizontal scrolling
                 }}
